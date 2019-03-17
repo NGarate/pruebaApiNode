@@ -10,6 +10,16 @@ exports.DB_PATH = <mongodb path>;
 exports.DB_NAME = <database name>;
 exports.ACCESS_TOKEN = <token literal>;
 ```
+* Añadir a la collección 'products' el siguente documento:
+```
+{
+    _id: "productId",
+    counterId: 0
+}
+```
+
+Ya se puede ejecutar la aplicación `node index`
+
 Los endpoints disponibles son:
 * GET /products
 > Devuelve todos los productos en un array hasta el límite.  
