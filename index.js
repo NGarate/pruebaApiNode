@@ -7,12 +7,12 @@
  * Docs {@link https://mongoosejs.com/docs/guide.html}.
  */
 const express = require("express");
-const { router } = require("./routes");
+const { product } = require("./routes/product");
 const { PORT } = require("./config");
 
 const app = express();
 
-app.use("/", router);
+app.use("/product", product);
 
 app.listen(PORT);
 

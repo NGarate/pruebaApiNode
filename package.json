@@ -20,5 +20,19 @@
     "express": "^4.16.4",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.19"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-deprecate": "^0.5.4",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-jsdoc": "^4.1.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "jest": "^24.1.0",
+    "jest-config": "^24.5.0",
+    "jsdoc": "^3.5.5",
+    "prettier": "^1.16.4"
   }
 }

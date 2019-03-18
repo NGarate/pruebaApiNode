@@ -1,15 +1,10 @@
 **Prueba simple API NodeJS**  
 Para iniciar:
-* Descargar
-* Instalar dependencias `npm install`
-* Crear el archivo de configuración `config.js`
-* Con este contenido:
-``` 
-exports.PORT = <listen port>;
-exports.DB_PATH = <mongodb path>;
-exports.DB_NAME = <database name>;
-exports.ACCESS_TOKEN = <token literal>;
-```
+* Clonar o descargar.
+* Instalar dependencias `npm install`.
+* Editar el archivo de configuración `config.js` con tus datos.
+* Iniciar con `node index`.
+
 Los endpoints disponibles son:
 * GET /products
 > Devuelve todos los productos en un array hasta el límite.  
@@ -24,3 +19,6 @@ Los endpoints disponibles son:
 * DELETE /product/:id
 > Elimina el producto con el id aportado  
 > Require el header `Authorization` con el valor access_token.
+
+**TODOs:**
+* Implementar autentificación con oath 2
