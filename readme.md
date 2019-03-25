@@ -1,11 +1,11 @@
-**Prueba simple API NodeJS**  
-Para iniciar:
+# Prueba simple API NodeJS
+## Para iniciar:
 * Clonar o descargar.
 * Instalar dependencias `npm install`.
 * Editar el archivo de configuración `config.js` con tus datos.
 * Iniciar con `node index`.
 
-Los endpoints disponibles son:
+## Los endpoints disponibles son:
 * GET /products
 > Devuelve todos los productos en un array hasta el límite.  
 > Acepta el parámetro limit, por defecto es 20.
@@ -20,5 +20,8 @@ Los endpoints disponibles son:
 > Elimina el producto con el id aportado  
 > Require el header `Authorization` con el valor access_token.
 
-**TODOs:**
-* Implementar autentificación con oath 2
+## TODOs:
+- [ ] Implementar autentificación con oath 2
+- [ ] Añadir y configurar JOI
+- [ ] Añadir y configurar logs con Winston
+- [ ] Añadir seguridad
