@@ -8,22 +8,22 @@
 ## Los endpoints disponibles son:
 * GET /products
 > Devuelve todos los productos en un array hasta el límite.  
-> Acepta el parámetro limit, por defecto es 20.
+> Acepta el parámetro limit, por defecto es 20.  
 * GET /product/:id
-> Devuelve un producto en JSON con el id aportado.
+> Devuelve un producto en JSON con el id aportado.  
 * POST /product
 > Agrega un producto.  
 > Require el campo name.  
 > Acepta el campo opcional description.  
-> Require el header `Authorization` con el valor access_token.
+> Require el header `Authorization` con el valor access_token.  
 * DELETE /product/:id
-> Elimina el producto con el id aportado  
-> Require el header `Authorization` con el valor access_token.
+> Elimina el producto con el id aportado.  
+> Require el header `Authorization` con el valor access_token.  
 * PUT /product/:id
-> Actualiza el producto con el id aportado 
-> Require el campo name.
-> Acepta el campo opcional description.
-> Require el header `Authorization` con el valor access_token.
+> Actualiza el producto con el id aportado.  
+> Require el campo name.  
+> Acepta el campo opcional description.  
+> Require el header `Authorization` con el valor access_token.  
 
 ## TODOs:
 - [ ] Implementar autentificación con oath 2
