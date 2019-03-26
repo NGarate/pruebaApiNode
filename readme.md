@@ -19,6 +19,11 @@
 * DELETE /product/:id
 > Elimina el producto con el id aportado  
 > Require el header `Authorization` con el valor access_token.
+* PUT /product/:id
+> Actualiza el producto con el id aportado 
+> Require el campo name.
+> Acepta el campo opcional description.
+> Require el header `Authorization` con el valor access_token.
 
 ## TODOs:
 - [ ] Implementar autentificación con oath 2
