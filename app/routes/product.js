@@ -5,36 +5,48 @@
  */
 
 const router = require("express").Router();
-const { getCollection } = require("../db");
+const validator = require("express-joi-validation")({});
+const { params, query, body } = require("../schemas/product");
+const paramsValidator = validator.params(params);
+const queryValidator = validator.query(query);
+const bodyValidator = validator.body(body);
+const { getCollection } = require("../controllers/db");
 const { ACCESS_TOKEN } = require("../config");
+const UNPROCESSABLE_ENTITY = 422;
 
 router.delete("*", checkAuth);
 router.post("*", checkAuth);
 router.put("*", checkAuth);
 
-router.delete("/:id", async function(req, res) {
-	const productId = checkId(req);
+router.delete("/:id", paramsValidator, async function(req, res) {
+	const { id: productId } = req.params;
 
 	const Products = await getCollection("products");
 	const result = await Products.deleteOne({ productId });
 
 	if (result.deletedCount !== 1) {
-		return res.status(422).json({ error: `No product with id: ${productId}` });
+		return res
+			.status(UNPROCESSABLE_ENTITY)
+			.json({ error: `No product with id: ${productId}` });
 	}
 
 	return res.json({ result: `Product ${productId} is deleted` });
 });
 
-router.get("/:id", async (req, res) => {
-	const productId = checkId(req);
-	const Products = await getCollection("products");
+router.get("/:id", paramsValidator, async (req, res, next) => {
+	try {
+		const { id: productId } = req.params;
+		const Products = await getCollection("products");
 
-	const result = await Products.findOne({ productId });
+		const result = await Products.findOne({ productId });
 
-	res.json(result);
+		res.json(result);
+	} catch (err) {
+		next(err);
+	}
 });
 
-router.get("/", async (req, res) => {
+router.get("/", queryValidator, async (req, res) => {
 	const limit = parseInt(req.query.limit) || 20;
 	const Products = await getCollection("products");
 
@@ -45,10 +57,8 @@ router.get("/", async (req, res) => {
 	res.json(products);
 });
 
-router.post("/", async (req, res) => {
-	const { name, description } = req.query;
-
-	if (!name) res.status(422).json({ error: "Mising param name" });
+router.post("/", bodyValidator, async (req, res, next) => {
+	const { name, description } = req.body;
 	const Products = await getCollection("products");
 
 	try {
@@ -57,41 +67,52 @@ router.post("/", async (req, res) => {
 			name
 		};
 
-		if (description) product.description = description;
+		if (description) {
+			product.description = description;
+		}
 
 		const result = await Products.insertOne(product);
 
 		if (result.insertedCount !== 1) {
-			return res.status(422).json({ error: "No product created" });
+			return res
+				.status(UNPROCESSABLE_ENTITY)
+				.json({ error: "No product created" });
 		}
 
 		res.json({ product });
 	} catch (err) {
-		res.status(500).json({ error: err.message });
+		next(err);
 	}
 });
 
-router.put("/:id", async function(req, res) {
-	const productId = checkId(req);
-	const { name, description } = req.query;
-
-	if (!name) res.status(422).json({ error: "Mising param name" });
+router.put("/:id", paramsValidator, bodyValidator, async (req, res, next) => {
+	const { name, description } = req.body;
+	const { id: productId } = req.params;
 	const product = { name };
 
-	if (description) product.description = description;
-	const Products = await getCollection("products");
-
-	const result = await Products.findOneAndUpdate(
-		{ productId },
-		{ $set: product },
-		{ upsert: false, returnOriginal: false }
-	);
-
-	if (result.lastErrorObject.n !== 1) {
-		return res.status(422).json({ error: `No product with id: ${productId}` });
+	if (description) {
+		product.description = description;
 	}
 
-	return res.json(result.value);
+	try {
+		const Products = await getCollection("products");
+
+		const result = await Products.findOneAndUpdate(
+			{ productId },
+			{ $set: product },
+			{ upsert: false, returnOriginal: false }
+		);
+
+		if (result.lastErrorObject.n !== 1) {
+			return res
+				.status(UNPROCESSABLE_ENTITY)
+				.json({ error: `No product with id: ${productId}` });
+		}
+
+		return res.json(result.value);
+	} catch (err) {
+		next(err);
+	}
 });
 
 /**
@@ -126,24 +147,6 @@ function checkAuth(req, res, next) {
 	}
 
 	next();
-}
-
-/**
- * @description Checks if id is a valid integer, if not throws an error.
- *
- * @throws Error if id is not a integer.
- * @param {number} req - HttpRequest object.
- * @returns {undefined}
- */
-function checkId(req) {
-	const id = req.params.id;
-
-	if (!id) throw new Error("Product not found");
-
-	if (isNaN(id) || id != parseInt(id)) {
-		throw new Error("Id must be a valid integer");
-	}
-	return parseInt(id);
 }
 
 exports.product = router;

@@ -3,7 +3,7 @@
  * Docs {@link https://mongoosejs.com/docs/guide.html}.
  */
 const MongoClient = require("mongodb").MongoClient;
-const { DB_PATH, DB_NAME } = require("./config");
+const { DB_PATH, DB_NAME } = require("../config");
 
 let db;
 
@@ -24,10 +24,14 @@ async function connectToDb() {
  * @returns {Object} - The mongoDb collection.
  */
 async function getCollection(collection) {
-	if (!db) db = await connectToDb();
+	if (!db) {
+		db = await connectToDb();
+	}
 	const Collection = db.collection(collection);
 
-	if (!Collection) throw new Error(`Collection ${collection} not found`);
+	if (!Collection) {
+		throw new Error(`Collection ${collection} not found`);
+	}
 	return Collection;
 }
 
