@@ -22,6 +22,7 @@
 
 ## TODOs:
 - [ ] Implementar autentificación con oath 2
-- [ ] Añadir y configurar JOI
+- [x] Añadir y configurar JOI
 - [ ] Añadir y configurar logs con Winston
 - [ ] Añadir seguridad
+- [ ] Crear test Jest
