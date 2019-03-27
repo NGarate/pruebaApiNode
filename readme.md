@@ -22,6 +22,6 @@
 
 ## TODOs:
 - [ ] Implementar autentificación con oath 2
-- [ ] Añadir y configurar JOI
+- [X] Añadir y configurar JOI
 - [ ] Añadir y configurar logs con Winston
 - [ ] Añadir seguridad

@@ -1,6 +1,10 @@
 /**
- * @external MongoClient
- * Docs {@link https://mongoosejs.com/docs/guide.html}.
+ * @module DB
+ * @requires MongoClient
+ */
+
+/**
+ * @external MongoClient {@link https://mongodb.github.io/node-mongodb-native/3.2/api/ Documentation}
  */
 const MongoClient = require("mongodb").MongoClient;
 const { DB_PATH, DB_NAME } = require("../config");
@@ -8,7 +12,11 @@ const { DB_PATH, DB_NAME } = require("../config");
 let db;
 
 /**
- * @description Try to connect to mongodb instance
+ * @private
+ * @async
+ * @function
+ * @description - Try to connect to mongodb instance
+ *
  * @returns {Object} MongoDb db object.
  */
 async function connectToDb() {
@@ -18,12 +26,14 @@ async function connectToDb() {
 }
 
 /**
+ * @async
+ * @function
  * @description - Tries to connect to the given collection
  *
  * @param {string} collection - The name of the mongoDb collection.
  * @returns {Object} - The mongoDb collection.
  */
-async function getCollection(collection) {
+exports.getCollection = async collection => {
 	if (!db) {
 		db = await connectToDb();
 	}
@@ -33,6 +43,4 @@ async function getCollection(collection) {
 		throw new Error(`Collection ${collection} not found`);
 	}
 	return Collection;
-}
-
-exports.getCollection = getCollection;
+};

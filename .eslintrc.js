@@ -34,7 +34,7 @@ module.exports = {
 		"func-names": [ "warn", "never" ],
 		"global-require": [ "error" ],
 		"guard-for-in": [ "error" ],
-		"id-length": [ "error", { "min": 3, "exceptions": ["a", "b", "DB", "db", "fs", "i", "id", "IP", "ip", "j", "k", "ko", "OK", "ok", "OS", "os", "pi", "sn", "to"] } ],
+		"id-length": [ "error", { "min": 3, "exceptions": ["a", "b", "DB", "db", "el", "fs", "i", "id", "IP", "ip", "j", "k", "ko", "OK", "ok", "OS", "os", "pi", "sn", "to"] } ],
 		"jsdoc/check-examples": [ "warn" ],
         "jsdoc/check-param-names": [ "warn" ],
         "jsdoc/check-tag-names": [ "warn" ],
