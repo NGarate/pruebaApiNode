@@ -1,7 +1,8 @@
 /**
  * @description Manages database connection.
- * @module DB
+ * @module controllers/DB
  * @requires MongoClient
+ * @requires config
  */
 
 /**

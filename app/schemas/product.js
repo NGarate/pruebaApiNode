@@ -1,6 +1,7 @@
 /**
- * JOI's schemas for product.
+ * @description JOI's schemas for product.
  * @module schemas/product
+ * @requires joi
  */
 const Joi = require("joi");
 

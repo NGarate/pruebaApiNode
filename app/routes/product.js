@@ -2,8 +2,11 @@
  * @description Routes for /product.
  *
  * @module routes/product
- * @exports router
  * @requires express.Router
+ * @requires express-joi-validation
+ * @requires controllers/product
+ * @requires controllers/auth
+ * @requires schemas/product
  */
 
 const {
@@ -15,8 +18,10 @@ const {
 } = require("../controllers/product");
 const { checkAuth } = require("../controllers/auth");
 const { params, query, body } = require("../schemas/product");
-
-const validator = require("express-joi-validation")({});
+const UNPROCESSABLE_ENTITY = 422;
+const validator = require("express-joi-validation")({
+    statusCode: UNPROCESSABLE_ENTITY
+});
 const paramsValidator = validator.params(params);
 const queryValidator = validator.query(query);
 const bodyValidator = validator.body(body);
