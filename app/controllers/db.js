@@ -1,10 +1,12 @@
 /**
+ * @description Manages database connection.
  * @module DB
  * @requires MongoClient
  */
 
 /**
- * @external MongoClient {@link https://mongodb.github.io/node-mongodb-native/3.2/api/ Documentation}
+ * @external MongoClient
+ * @see {@link https://mongodb.github.io/node-mongodb-native/3.2/api|Mongo Native Driver docs}
  */
 const MongoClient = require("mongodb").MongoClient;
 const { DB_PATH, DB_NAME } = require("../config");
@@ -28,10 +30,10 @@ async function connectToDb() {
 /**
  * @async
  * @function
- * @description - Tries to connect to the given collection
+ * @description - Tries to connect to provided collection.
  *
- * @param {string} collection - The name of the mongoDb collection.
- * @returns {Object} - The mongoDb collection.
+ * @param {string} collection - MongoDB collection's name.
+ * @returns {Object} - A MongoDB collection.
  */
 exports.getCollection = async collection => {
 	if (!db) {

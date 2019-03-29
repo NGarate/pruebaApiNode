@@ -28,7 +28,7 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-DB.html">DB</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-DB.html#.getCollection">getCollection</a></li></ul></li><li><a href="module-routers_product.html">routers/product</a></li></ul><h3>Externals</h3><ul><li><a href="Express%2520%257B@link%2520https___expressjs.com_en_4x_api.external_html%257D.html">html}</a></li><li><a href="MongoClient%2520%257B@link%2520https___mongodb.github.io_node-mongodb-native_3.external_2_api_%2520Documentation%257D.html">2/api/ Documentation}</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-routers_product-productRouter.html">productRouter</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-routers_product-productRouter.html#~put/product">put/product</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-controllers_auth.html">controllers/auth</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-controllers_auth.html#.checkAuth">checkAuth</a></li></ul></li><li><a href="module-controllers_product.html">controllers/product</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.deleteProduct">deleteProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.getProduct">getProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.getProducts">getProducts</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.postProduct">postProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.putProduct">putProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#~getNextId">getNextId</a></li></ul></li><li><a href="module-DB.html">DB</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-DB.html#.getCollection">getCollection</a></li></ul></li><li><a href="module-Main.html">Main</a></li><li><a href="module-routes_product.html">routes/product</a><ul class='members'><li data-type='member' style='display: none;'><a href="module-routes_product.html#.router">router</a></li></ul></li><li><a href="module-schemas_product.html">schemas/product</a><ul class='members'><li data-type='member' style='display: none;'><a href="module-schemas_product.html#.body">body</a></li><li data-type='member' style='display: none;'><a href="module-schemas_product.html#.params">params</a></li><li data-type='member' style='display: none;'><a href="module-schemas_product.html#.query">query</a></li></ul></li></ul><h3>Externals</h3><ul><li><a href="external-express.html">express</a></li><li><a href="external-helmet.html">helmet</a></li><li><a href="external-MongoClient.html">MongoClient</a></li></ul>
 </nav>
 
 <div id="main">
@@ -66,136 +66,36 @@
 </ul>
 <h2>Los endpoints disponibles son:</h2><ul>
 <li>GET /products<blockquote>
-<p>Devuelve todos los productos en un array hasta el límite.<br>Acepta el parámetro limit, por defecto es 20.</p>
+<p>Devuelve todos los productos en un array hasta el límite.<br>Acepta el parámetro limit, por defecto es 20.  </p>
 </blockquote>
 </li>
 <li>GET /product/:id<blockquote>
-<p>Devuelve un producto en JSON con el id aportado.</p>
+<p>Devuelve un producto en JSON con el id aportado.  </p>
 </blockquote>
 </li>
 <li>POST /product<blockquote>
-<p>Agrega un producto.<br>Require el campo name.<br>Acepta el campo opcional description.<br>Require el header <code>Authorization</code> con el valor access_token.</p>
+<p>Agrega un producto.<br>Require el campo name.<br>Acepta el campo opcional description.<br>Require el header <code>Authorization</code> con el valor access_token.  </p>
 </blockquote>
 </li>
 <li>DELETE /product/:id<blockquote>
-<p>Elimina el producto con el id aportado<br>Require el header <code>Authorization</code> con el valor access_token.</p>
+<p>Elimina el producto con el id aportado.<br>Require el header <code>Authorization</code> con el valor access_token.  </p>
+</blockquote>
+</li>
+<li>PUT /product/:id<blockquote>
+<p>Actualiza el producto con el id aportado.<br>Require el campo name.<br>Acepta el campo opcional description.<br>Require el header <code>Authorization</code> con el valor access_token.  </p>
 </blockquote>
 </li>
 </ul>
 <h2>TODOs:</h2><ul>
 <li>[ ] Implementar autentificación con oath 2</li>
-<li>[X] Añadir y configurar JOI</li>
+<li>[x] Añadir y configurar JOI</li>
 <li>[ ] Añadir y configurar logs con Winston</li>
 <li>[ ] Añadir seguridad</li>
+<li>[ ] Crear test Jest</li>
 </ul></article>
     </section>
 
 
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2>
-        index.js
-        </h2>
-        
-    
-</header>
-
-<article>
-    
-        <div class="container-overview">
-        
-            
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Noel Garate</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-            
-                <div class="description"><p>main</p></div>
-            
-
-            
-        
-        </div>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
 
 
 
@@ -207,7 +107,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Mar 27 2019 20:00:12 GMT+0100 (GMT+01:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 29 2019 01:31:06 GMT+0100 (GMT+01:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
