@@ -28,7 +28,7 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-controllers_auth.html">controllers/auth</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-controllers_auth.html#.checkAuth">checkAuth</a></li></ul></li><li><a href="module-controllers_product.html">controllers/product</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.deleteProduct">deleteProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.getProduct">getProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.getProducts">getProducts</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.postProduct">postProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.putProduct">putProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#~getNextId">getNextId</a></li></ul></li><li><a href="module-DB.html">DB</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-DB.html#.getCollection">getCollection</a></li></ul></li><li><a href="module-Main.html">Main</a></li><li><a href="module-routes_product.html">routes/product</a><ul class='members'><li data-type='member' style='display: none;'><a href="module-routes_product.html#.router">router</a></li></ul></li><li><a href="module-schemas_product.html">schemas/product</a><ul class='members'><li data-type='member' style='display: none;'><a href="module-schemas_product.html#.body">body</a></li><li data-type='member' style='display: none;'><a href="module-schemas_product.html#.params">params</a></li><li data-type='member' style='display: none;'><a href="module-schemas_product.html#.query">query</a></li></ul></li></ul><h3>Externals</h3><ul><li><a href="external-express.html">express</a></li><li><a href="external-helmet.html">helmet</a></li><li><a href="external-MongoClient.html">MongoClient</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-config.html">config</a><ul class='members'><li data-type='member' style='display: none;'><a href="module-config.html#.ACCESS_TOKEN">ACCESS_TOKEN</a></li><li data-type='member' style='display: none;'><a href="module-config.html#.DB_NAME">DB_NAME</a></li><li data-type='member' style='display: none;'><a href="module-config.html#.DB_PATH">DB_PATH</a></li><li data-type='member' style='display: none;'><a href="module-config.html#.PORT">PORT</a></li></ul></li><li><a href="module-controllers_auth.html">controllers/auth</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-controllers_auth.html#.checkAuth">checkAuth</a></li></ul></li><li><a href="module-controllers_DB.html">controllers/DB</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-controllers_DB.html#.getCollection">getCollection</a></li></ul></li><li><a href="module-controllers_product.html">controllers/product</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.deleteProduct">deleteProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.getProduct">getProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.getProducts">getProducts</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.postProduct">postProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.putProduct">putProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#~getNextId">getNextId</a></li></ul></li><li><a href="module-Main.html">Main</a></li><li><a href="module-routes_product.html">routes/product</a><ul class='members'><li data-type='member' style='display: none;'><a href="module-routes_product.html#.router">router</a></li></ul></li><li><a href="module-schemas_product.html">schemas/product</a><ul class='members'><li data-type='member' style='display: none;'><a href="module-schemas_product.html#.body">body</a></li><li data-type='member' style='display: none;'><a href="module-schemas_product.html#.params">params</a></li><li data-type='member' style='display: none;'><a href="module-schemas_product.html#.query">query</a></li></ul></li></ul><h3>Externals</h3><ul><li><a href="external-express.html">express</a></li><li><a href="external-helmet.html">helmet</a></li><li><a href="external-MongoClient.html">MongoClient</a></li></ul>
 </nav>
 
 <div id="main">
@@ -48,6 +48,7 @@
  */
 const { getCollection } = require("../controllers/db");
 const UNPROCESSABLE_ENTITY = 422;
+const INTERNAL_SERVER_ERROR = 500;
 
 /**
  * @async
@@ -61,18 +62,22 @@ const UNPROCESSABLE_ENTITY = 422;
  * @returns {undefined}
  */
 exports.deleteProduct = async function(req, res) {
-	const { id: productId } = req.params;
+	try {
+		const { id: productId } = req.params;
 
-	const Products = await getCollection("products");
-	const result = await Products.deleteOne({ productId });
+		const Products = await getCollection("products");
+		const result = await Products.deleteOne({ productId });
 
-	if (!result.deletedCount) {
-		return res
-			.status(UNPROCESSABLE_ENTITY)
-			.json({ error: `No product with id: ${productId}` });
+		if (!result.deletedCount) {
+			return res
+				.status(UNPROCESSABLE_ENTITY)
+				.json({ error: `No product with id: ${productId}` });
+		}
+
+		res.json({ result: `Product ${productId} is deleted` });
+	} catch (error) {
+		res.status(INTERNAL_SERVER_ERROR).json({ error: error.message });
 	}
-
-	res.json({ result: `Product ${productId} is deleted` });
 };
 
 /**
@@ -87,12 +92,21 @@ exports.deleteProduct = async function(req, res) {
  * @returns {undefined}
  */
 exports.getProduct = async function(req, res) {
-	const { id: productId } = req.params;
-	const Products = await getCollection("products");
+	try {
+		const { id: productId } = req.params;
+		const Products = await getCollection("products");
 
-	const result = await Products.findOne({ productId });
+		const result = await Products.findOne({ productId });
 
-	res.json(result);
+		if (!result) {
+			return res
+				.status(UNPROCESSABLE_ENTITY)
+				.json({ error: `No product find with id: ${productId}` });
+		}
+		res.json(result);
+	} catch (error) {
+		res.status(INTERNAL_SERVER_ERROR).json({ error: error.message });
+	}
 };
 
 /**
@@ -107,15 +121,19 @@ exports.getProduct = async function(req, res) {
  * @returns {undefined}
  */
 exports.getProducts = async function(req, res) {
-	const DEFAULT_LIMIT = 20;
-	const limit = parseInt(req.query.limit || DEFAULT_LIMIT);
-	const Products = await getCollection("products");
+	try {
+		const DEFAULT_LIMIT = 20;
+		const limit = parseInt(req.query.limit || DEFAULT_LIMIT);
+		const Products = await getCollection("products");
 
-	const products = await Products.find()
-		.limit(limit)
-		.toArray();
+		const products = await Products.find()
+			.limit(limit)
+			.toArray();
 
-	res.json(products);
+		res.json(products);
+	} catch (error) {
+		res.status(INTERNAL_SERVER_ERROR).json({ error: error.message });
+	}
 };
 
 /**
@@ -132,24 +150,28 @@ exports.getProducts = async function(req, res) {
  * @returns {undefined}
  */
 exports.postProduct = async function(req, res) {
-	const { name, description = "" } = req.body;
-	const Products = await getCollection("products");
+	try {
+		const { name, description = "" } = req.body;
+		const Products = await getCollection("products");
 
-	const product = {
-		productId: await getNextId("productId"),
-		name,
-		description
-	};
+		const product = {
+			productId: await getNextId("productId"),
+			name,
+			description
+		};
 
-	const result = await Products.insertOne(product);
+		const result = await Products.insertOne(product);
 
-	if (!result.insertedCount) {
-		return res
-			.status(UNPROCESSABLE_ENTITY)
-			.json({ error: "No product created" });
+		if (!result.insertedCount) {
+			return res
+				.status(UNPROCESSABLE_ENTITY)
+				.json({ error: "No product created" });
+		}
+
+		res.json({ product });
+	} catch (error) {
+		res.status(INTERNAL_SERVER_ERROR).json({ error: error.message });
 	}
-
-	res.json({ product });
 };
 
 /**
@@ -168,25 +190,29 @@ exports.postProduct = async function(req, res) {
  * @returns {undefined}
  */
 exports.putProduct = async function(req, res) {
-	const { name, description = "" } = req.body;
-	const { id: productId } = req.params;
-	const product = { name, description }.filter(el => el);
+	try {
+		const { name, description = "" } = req.body;
+		const { id: productId } = req.params;
+		const product = { name, description }.filter(el => el);
 
-	const Products = await getCollection("products");
+		const Products = await getCollection("products");
 
-	const result = await Products.findOneAndUpdate(
-		{ productId },
-		{ $set: product },
-		{ upsert: false, returnOriginal: false }
-	);
+		const result = await Products.findOneAndUpdate(
+			{ productId },
+			{ $set: product },
+			{ upsert: false, returnOriginal: false }
+		);
 
-	if (!result.lastErrorObject.n) {
-		return res
-			.status(UNPROCESSABLE_ENTITY)
-			.json({ error: `No product with id: ${productId}` });
+		if (!result.lastErrorObject.n) {
+			return res
+				.status(UNPROCESSABLE_ENTITY)
+				.json({ error: `No product with id: ${productId}` });
+		}
+
+		return res.json(result.value);
+	} catch (error) {
+		res.status(INTERNAL_SERVER_ERROR).json({ error: error.message });
 	}
-
-	return res.json(result.value);
 };
 
 /**
@@ -222,7 +248,7 @@ async function getNextId(idName) {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 29 2019 01:31:06 GMT+0100 (GMT+01:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 29 2019 19:11:33 GMT+0100 (GMT+01:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

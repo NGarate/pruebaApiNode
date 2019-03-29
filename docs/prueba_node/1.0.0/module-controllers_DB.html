@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>MongoClient - Documentation</title>
+    <title>controllers/DB - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -33,7 +33,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">MongoClient</h1>
+    <h1 class="page-title">controllers/DB</h1>
     
 
     
@@ -45,11 +45,8 @@
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="module-controllers_DB.html">controllers/DB</a>~</span>
         
-        MongoClient
-        </h2>
+            
         
     
 </header>
@@ -59,13 +56,21 @@
         <div class="container-overview">
         
             
+                <div class="description"><p>Manages database connection.</p></div>
+            
+
+            
+                
+
+
+
 
 <dl class="details">
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app_controllers_db.js.html">app/controllers/db.js</a>, <a href="app_controllers_db.js.html#line8">line 8</a>
+        <a href="app_controllers_db.js.html">app/controllers/db.js</a>, <a href="app_controllers_db.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -96,13 +101,6 @@
     
 
     
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="https://mongodb.github.io/node-mongodb-native/3.2/api">Mongo Native Driver docs</a></li>
-        </ul>
-    </dd>
-    
 
     
 </dl>
@@ -110,7 +108,33 @@
 
 
 
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             
         
@@ -119,6 +143,14 @@
 
     
 
+    
+        <h3 class="subsection-title">Requires</h3>
+
+        <ul>
+            <li>module:MongoClient</li>
+        
+            <li><a href="module-config.html">module:config</a></li>
+        </ul>
     
 
     
@@ -131,6 +163,172 @@
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getCollection"><span class="type-signature">(async, static) </span>getCollection<span class="signature">(collection)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="app_controllers_db.js.html">app/controllers/db.js</a>, <a href="app_controllers_db.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <ul>
+<li>Tries to connect to provided collection.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>collection</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>MongoDB collection's name.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>A MongoDB collection.</li>
+</ul>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
     
 
     
