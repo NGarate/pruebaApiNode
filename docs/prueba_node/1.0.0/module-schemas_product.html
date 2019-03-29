@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>schemas/product - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="wrap">
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-controllers_auth.html">controllers/auth</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-controllers_auth.html#.checkAuth">checkAuth</a></li></ul></li><li><a href="module-controllers_product.html">controllers/product</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.deleteProduct">deleteProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.getProduct">getProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.getProducts">getProducts</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.postProduct">postProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#.putProduct">putProduct</a></li><li data-type='method' style='display: none;'><a href="module-controllers_product.html#~getNextId">getNextId</a></li></ul></li><li><a href="module-DB.html">DB</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-DB.html#.getCollection">getCollection</a></li></ul></li><li><a href="module-Main.html">Main</a></li><li><a href="module-routes_product.html">routes/product</a><ul class='members'><li data-type='member' style='display: none;'><a href="module-routes_product.html#.router">router</a></li></ul></li><li><a href="module-schemas_product.html">schemas/product</a><ul class='members'><li data-type='member' style='display: none;'><a href="module-schemas_product.html#.body">body</a></li><li data-type='member' style='display: none;'><a href="module-schemas_product.html#.params">params</a></li><li data-type='member' style='display: none;'><a href="module-schemas_product.html#.query">query</a></li></ul></li></ul><h3>Externals</h3><ul><li><a href="external-express.html">express</a></li><li><a href="external-helmet.html">helmet</a></li><li><a href="external-MongoClient.html">MongoClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">schemas/product</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+                <div class="description"><p>JOI's schemas for product.</p></div>
+            
+
+            
+                
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="app_schemas_product.js.html">app/schemas/product.js</a>, <a href="app_schemas_product.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".body"><span class="type-signature">(static, constant) </span>body<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="app_schemas_product.js.html">app/schemas/product.js</a>, <a href="app_schemas_product.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Schema for request body.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>{
+	name: Joi.string()
+ 			.regex(/^[a-zA-Z0-9 ]+$/, "alphanumeric and white spaces")
+			.trim()
+			.required(),
+	description: Joi.string().trim()
+	}</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".params"><span class="type-signature">(static, constant) </span>params<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="app_schemas_product.js.html">app/schemas/product.js</a>, <a href="app_schemas_product.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Schema for request params.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>{ id: Joi.number().integer().required() }</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".query"><span class="type-signature">(static, constant) </span>query<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="app_schemas_product.js.html">app/schemas/product.js</a>, <a href="app_schemas_product.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Schema for request query.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>{ limit: Joi.number().integer() }</code></pre>
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 29 2019 01:31:06 GMT+0100 (GMT+01:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/jquery-3.1.1.min.js"></script>
+
+<script src="scripts/search.js"></script>
+
+
+<script src="scripts/collapse.js"></script>
+
+
+
+</body>
+</html>
