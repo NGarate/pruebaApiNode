@@ -22,11 +22,11 @@ let db;
  *
  * @returns {Object} MongoDb db object.
  */
-async function connectToDb() {
+exports.connectToDb = async () => {
 	const client = await MongoClient.connect(DB_PATH, { useNewUrlParser: true });
 	db = client.db(DB_NAME);
 	return db;
-}
+};
 
 /**
  * @async
@@ -38,7 +38,7 @@ async function connectToDb() {
  */
 exports.getCollection = async collection => {
 	if (!db) {
-		db = await connectToDb();
+		db = await exports.connectToDb();
 	}
 	const Collection = db.collection(collection);
 

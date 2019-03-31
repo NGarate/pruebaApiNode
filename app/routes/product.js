@@ -20,7 +20,7 @@ const { checkAuth } = require("../controllers/auth");
 const { params, query, body } = require("../schemas/product");
 const UNPROCESSABLE_ENTITY = 422;
 const validator = require("express-joi-validation")({
-    statusCode: UNPROCESSABLE_ENTITY
+	statusCode: UNPROCESSABLE_ENTITY
 });
 const paramsValidator = validator.params(params);
 const queryValidator = validator.query(query);

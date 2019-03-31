@@ -8,14 +8,14 @@
  * @external express
  * @see {@link https://expressjs.com/en/4x/api.html|Express docs}
  */
+const express = require("express");
 
 /**
  * @external helmet
  * @see {@link https://helmetjs.github.io|Helmet docs}
  */
-
-const express = require("express");
 const helmet = require("helmet");
+const { logger } = require("./app/logger");
 const product = require("./app/routes/product");
 const { PORT } = require("./app/config");
 
@@ -29,4 +29,4 @@ app.use("/product", product.router);
 app.listen(PORT);
 
 // eslint-disable-next-line no-console
-console.log(`Listening at port: ${PORT}`);
+logger.info(`Listening at port: ${PORT}`);

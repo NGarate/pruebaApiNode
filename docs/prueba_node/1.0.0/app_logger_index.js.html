@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>MongoClient - Documentation</title>
+    <title>app/logger/index.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -33,112 +33,76 @@
 
 <div id="main">
     
-    <h1 class="page-title">MongoClient</h1>
+    <h1 class="page-title">app/logger/index.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="module-controllers_DB.html">controllers/DB</a>~</span>
-        
-        MongoClient
-        </h2>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @description Logger creation and configuration
+ * @module logger
+ * @requires winston
+ * @requires config
+ */
 
-<article>
-    
-        <div class="container-overview">
-        
-            
+/**
+ * @external winston
+ * @see {@link https://www.npmjs.com/package/winston|Winston}
+ */
+const { createLogger, format, transports } = require("winston");
+require("winston-daily-rotate-file");
+require("winston-mongodb");
+const { colorize, combine, json, simple, timestamp, prettyPrint } = format;
+const { DB_PATH, ENV, LOG_LEVEL } = require("../config");
 
-<dl class="details">
+const envDaily = new transports.DailyRotateFile({
+	name: "dailyRotateByEnvironment",
+	frequency: "24h",
+	filename: `${ENV}.log`,
+	zippedArchive: true,
+	dirname: "./logs",
+	maxFiles: "30d",
+	level: LOG_LEVEL
+});
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app_controllers_db.js.html">app/controllers/db.js</a>, <a href="app_controllers_db.js.html#line8">line 8</a>
-    </li></ul></dd>
-    
+const mongoDBTransport = new transports.MongoDB({
+	name: "MongoBDTransport",
+	db: DB_PATH,
+	defaultMeta: { Env: ENV },
+	options: { useNewUrlParser: false },
+	// tryReconnect: true,
+	level: LOG_LEVEL,
+	includeIds: true
+});
 
-    
+/**
+ * @description Winston logger object
+ */
+exports.logger = createLogger({
+	level: LOG_LEVEL,
+	format: combine(json(), timestamp(), prettyPrint(), colorize()),
+	defaultMeta: { service: "prueba-node" },
+	transports: [envDaily, mongoDBTransport],
+	handleExceptions: true
+});
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="https://mongodb.github.io/node-mongodb-native/3.2/api">Mongo Native Driver docs</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-            
-
-            
-        
-        </div>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+// eslint-disable-next-line no-process-env
+if (ENV !== "production") {
+	exports.logger.add(
+		new transports.Console({
+			format: combine(timestamp("YYYY-MM-DD HH:mm:ss"), colorize(), simple()),
+			level: "silly"
+		})
+	);
+}
+</code></pre>
+        </article>
+    </section>
 
 
 
