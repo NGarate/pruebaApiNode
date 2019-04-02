@@ -67,7 +67,6 @@ module.exports = {
 		"no-iterator": [ "error" ],
 		"no-empty-function": [ "error" ],
 		"no-eval": [ "error" ],
-		"no-extra-parens": [ "error" ],
 		"no-global-assign": [ "error" ],
 		"no-label-var": [ "error" ],
 		"no-lone-blocks": [ "error" ],

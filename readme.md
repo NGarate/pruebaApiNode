@@ -26,10 +26,10 @@
 > Require el header `Authorization` con el valor access_token.  
 
 ## TODOs:
-- [ ] Implementar autentificación con oath 2
 - [x] Implementar y configurar JSDocs
-- [ ] Documentar toda la API
 - [x] Añadir y configurar JOI
-- [ ] Añadir y configurar logs con Winston
+- [x] Añadir y configurar logs con Winston
+- [ ] Crear tests Jest
+- [ ] Documentar toda la API
 - [ ] Añadir seguridad helmet y más
-- [ ] Crear test Jest
+- [ ] Implementar autentificación con oath 2

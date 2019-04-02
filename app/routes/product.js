@@ -18,6 +18,7 @@ const {
 } = require("../controllers/product");
 const { checkAuth } = require("../controllers/auth");
 const { params, query, body } = require("../schemas/product");
+const { logger } = require("../logger");
 const UNPROCESSABLE_ENTITY = 422;
 const validator = require("express-joi-validation")({
 	statusCode: UNPROCESSABLE_ENTITY
