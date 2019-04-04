@@ -9,7 +9,7 @@
  * @external MongoClient
  * @see {@link https://mongodb.github.io/node-mongodb-native/3.2/api|Mongo Native Driver docs}
  */
-const MongoClient = require("mongodb").MongoClient;
+const { MongoClient } = require("mongodb");
 const { DB_PATH, DB_NAME } = require("../config");
 
 let db;

@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "jsdoc": "./node_modules/.bin/jsdoc -c ./jsdoc.conf.json"
   },
   "keywords": [
@@ -15,7 +15,7 @@
     "NodeJS",
     "MongoDB"
   ],
-  "author": " <Noel Gárate>",
+  "author": "Noel Gárate",
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.4",
@@ -24,25 +24,27 @@
     "helmet": "^3.16.0",
     "joi": "^14.3.1",
     "mongodb": "^3.2.2",
-    "mongoose": "^5.4.20",
+    "mongoose": "^5.4.21",
     "morgan": "^1.9.1",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^3.8.0",
     "winston-mongodb": "^5.0.0"
   },
   "devDependencies": {
-    "docdash": "^1.0.3",
-    "eslint": "^5.15.3",
+    "docdash": "^1.1.0",
+    "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-deprecate": "^0.5.4",
     "eslint-plugin-html": "^5.0.3",
-    "eslint-plugin-jsdoc": "^4.5.0",
+    "eslint-plugin-jsdoc": "^4.7.0",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "jest": "^24.1.0",
-    "jest-config": "^24.5.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "jest": "^24.7.0",
+    "jest-config": "^24.7.0",
+    "jest-environment-node": "^24.7.0",
     "jsdoc": "^3.5.5",
+    "mongodb-memory-server": "^4.2.1",
     "prettier": "^1.16.4"
   }
 }
