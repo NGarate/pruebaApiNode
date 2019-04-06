@@ -1,10 +1,7 @@
 {
-  "tags": {
-    "allowUnknownTags": true
-  },
   "source": {
     "includePattern": ".js$",
-    "exclude": ["./node_modules", "./docs"],
+    "exclude": ["./node_modules", "./docs" ,"./coverage"],
     "include": ["./", "./package.json", "./readme.md"]
   },
   "sourceType": "module",
@@ -12,8 +9,8 @@
     "plugins/markdown"
   ],
   "opts": {
-    "template": "./node_modules/docdash",
-    "destination": "./docs/",
+    "template": "./node_modules/ink-docstrap/template",
+    "destination": "docs/",
     "encoding": "utf8",
     "recurse": true,
     "verbose": false
@@ -21,32 +18,19 @@
   "templates": {
     "cleverLinks": true,
     "monospaceLinks": false,
-    "useLongnameInNav": true,
-    "showInheritedInNav": true,
-    "default": {
-      "outputSourceFiles": true,
-      "includeDate": true
-    }
-  },
-  "docdash": {
-    "static": [true],
-    "sort": [true],
-    "sectionOrder": [
-         "Classes",
-         "Modules",
-         "Externals",
-         "Events",
-         "Namespaces",
-         "Mixins",
-         "Tutorials",
-         "Interfaces"
-    ],
-    "search": [true],
-    "collapse": [true],
-    "wrap": [false],
-    "typedefs": [true],
-    "navLevel": [1],
-    "private": [false],
-    "removeQuotes": ["trim"]
+    "systemName": "Prueba NodeJS API",
+    "footer": "",
+    "copyright":  "ngarate",
+    "includeDate": true,
+    "navType": "vertical",
+    "theme": "paper",
+    "linenums": true,
+    "collapseSymbols": true,
+    "inverseNav": true,
+    "outputSourceFiles": true ,
+    "dateFormat": "DD/MM/YYYY",
+    "syntaxTheme": "dark",
+    "sort": true,
+    "search": true 
   }
 }
