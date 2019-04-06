@@ -18,6 +18,7 @@ const {
 } = require("../controllers/product");
 const { checkAuth } = require("../controllers/auth");
 const { params, query, body } = require("../schemas/product");
+// eslint-disable-next-line no-unused-vars
 const { logger } = require("../logger");
 const UNPROCESSABLE_ENTITY = 422;
 const validator = require("express-joi-validation")({

@@ -10,6 +10,7 @@ beforeAll(async () => {
 		useNewUrlParser: true
 	});
 
+	// eslint-disable-next-line require-atomic-updates
 	db = await connection.db(global.__MONGO_DB_NAME__);
 });
 
@@ -18,7 +19,9 @@ afterAll(async () => {
 });
 
 jest.mock("../app/controllers/db");
-const products = require("../app/controllers/product");
+
+// eslint-disable-next-line no-unused-vars
+const product = require("../app/controllers/product");
 
 describe("Aggregate users to database", () => {
 	it("should aggregate docs from collection", async () => {
