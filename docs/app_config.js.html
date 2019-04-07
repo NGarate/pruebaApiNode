@@ -82,30 +82,44 @@
  * @module config
  */
 
-/** App listen port */
+/**
+ * @property {string} PORT - App listen port
+ */
 exports.PORT = process.env.PORT || "3000";
 
-/** Cookie-parset secret string */
+/**
+ * @property {string} COOKIE_SECRET - Cookie-parset secret string
+ */
 exports.COOKIE_SECRET = "\"KBK33GuR8`{X0s!}f`b2yv'xd>WX:a&lt;LUUE}b4?";
 
-/** MongoDB complete path */
+/**
+ * @property {string} DB_PATH - MongoDB complete path
+ */
 exports.DB_PATH = "mongodb://localhost:27017";
 
-/** Database name */
+/**
+ * @property {string} DB_NAME - UserDatabase name
+ */
 exports.DB_NAME = "test";
 
-/** Logs database name */
+/**
+ * @property {string} LOGS_DB_NAME - Logs database name
+ */
 exports.LOGS_DB_NAME = "logs";
 
-/** App environment variable */
+/**
+ * @property {string} ENV - App environment variable
+ */
 exports.ENV = process.env.ENV || "development";
 
-/** Minimun log level that is saved */
+/**
+ * @property {string} LOG_LEVEL - Winston minimun log level to save
+ */
 exports.LOG_LEVEL = process.env.LOG_LEVEL || "info";
 
 /**
  * @deprecated
- * Provisional universal ACCESS_TOKEN
+ * @property {string} ACCESS_TOKEN - Provisional universal ACCESS_TOKEN
  */
 exports.ACCESS_TOKEN = "Bearer 18912abf26b841a0f0e98ee22f99ffeffdf";
 </pre>
