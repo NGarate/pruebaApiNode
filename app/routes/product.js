@@ -29,12 +29,9 @@ const queryValidator = validator.query(query);
 const bodyValidator = validator.body(body);
 
 /**
- * @description - Express router with routes managers for /product.
- * @type {object}
- * @const
+ * @property {object} router - Express router with routes managers for /product.
  */
-exports.router = require("express").Router();
-const router = exports.router;
+const router = (exports.router = require("express").Router());
 
 router.delete("*", checkAuth);
 router.post("*", checkAuth);

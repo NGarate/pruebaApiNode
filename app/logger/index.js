@@ -38,7 +38,7 @@ const mongoDBTransport = new transports.MongoDB({
 });
 
 /**
- * @description Winston logger object
+ * @property {object} logger - Winston logger object.
  */
 const logger = (exports.logger = createLogger({
 	level: LOG_LEVEL,
