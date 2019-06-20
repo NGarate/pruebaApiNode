@@ -3,7 +3,7 @@
  * @module schemas/product
  * @requires joi
  */
-const Joi = require("joi");
+const Joi = require("@hapi/joi");
 
 /**
  * @description Schema for request params.

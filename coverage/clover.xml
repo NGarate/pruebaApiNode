@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1554337619876" clover="3.2.0">
-  <project timestamp="1554337619876" name="All files">
-    <metrics statements="137" coveredstatements="20" conditionals="30" coveredconditionals="6" methods="12" coveredmethods="0" elements="179" coveredelements="26" complexity="0" loc="137" ncloc="137" packages="6" files="8" classes="8"/>
-    <package name="Prueba">
+<coverage generated="1561037492835" clover="3.2.0">
+  <project timestamp="1561037492835" name="All files">
+    <metrics statements="132" coveredstatements="16" conditionals="24" coveredconditionals="0" methods="12" coveredmethods="0" elements="168" coveredelements="16" complexity="0" loc="132" ncloc="132" packages="6" files="8" classes="8"/>
+    <package name="pruebaAPINode">
       <metrics statements="22" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.js" path="C:\Proyectos\Prueba\index.js">
+      <file name="index.js" path="C:\Proyectos\pruebaAPINode\index.js">
         <metrics statements="22" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="15" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
@@ -30,23 +30,19 @@
         <line num="62" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="Prueba.app">
-      <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="6" methods="0" coveredmethods="0"/>
-      <file name="config.js" path="C:\Proyectos\Prueba\app\config.js">
-        <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="6" methods="0" coveredmethods="0"/>
-        <line num="7" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="22" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="25" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="31" count="1" type="stmt"/>
+    <package name="pruebaAPINode.app">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="config.js" path="C:\Proyectos\pruebaAPINode\app\config.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="Prueba.app.controllers">
+    <package name="pruebaAPINode.app.controllers">
       <metrics statements="72" coveredstatements="12" conditionals="18" coveredconditionals="0" methods="10" coveredmethods="0"/>
-      <file name="auth.js" path="C:\Proyectos\Prueba\app\controllers\auth.js">
+      <file name="auth.js" path="C:\Proyectos\pruebaAPINode\app\controllers\auth.js">
         <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="5" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
@@ -55,7 +51,7 @@
         <line num="20" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
       </file>
-      <file name="db.js" path="C:\Proyectos\Prueba\app\controllers\db.js">
+      <file name="db.js" path="C:\Proyectos\pruebaAPINode\app\controllers\db.js">
         <metrics statements="13" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
@@ -71,7 +67,7 @@
         <line num="46" count="0" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
       </file>
-      <file name="product.js" path="C:\Proyectos\Prueba\app\controllers\product.js">
+      <file name="product.js" path="C:\Proyectos\pruebaAPINode\app\controllers\product.js">
         <metrics statements="53" coveredstatements="8" conditionals="12" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
@@ -128,9 +124,9 @@
         <line num="190" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="Prueba.app.logger">
+    <package name="pruebaAPINode.app.logger">
       <metrics statements="12" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.js" path="C:\Proyectos\Prueba\app\logger\index.js">
+      <file name="index.js" path="C:\Proyectos\pruebaAPINode\app\logger\index.js">
         <metrics statements="12" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="12" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
@@ -146,34 +142,33 @@
         <line num="67" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="Prueba.app.routes">
-      <metrics statements="19" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="products.js" path="C:\Proyectos\Prueba\app\routes\products.js">
-        <metrics statements="19" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+    <package name="pruebaAPINode.app.routes">
+      <metrics statements="18" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="product.js" path="C:\Proyectos\pruebaAPINode\app\routes\product.js">
+        <metrics statements="18" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="18" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="Prueba.app.schemas">
+    <package name="pruebaAPINode.app.schemas">
       <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="product.js" path="C:\Proyectos\Prueba\app\schemas\product.js">
+      <file name="product.js" path="C:\Proyectos\pruebaAPINode\app\schemas\product.js">
         <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="6" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
